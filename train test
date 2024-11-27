@@ -1,47 +1,7 @@
-Theory :
-Description about splitting of data
-Importance and purpose of splitting
-Training Data
-Validation Data
-Testing Data
-Parameter :
-1. Test Size
-2. Train size
-3. Random State
-4. train_test_split() Function
-
-
-Program 1 :
 import pandas as pd
-from sklearn.model_selection import train_test_split
-df = pd.read_csv('Real estate.csv')
-X = df.iloc[:, :-1]
-y = df.iloc[:, -1]
-X_train, X_test, y_train, y_test = train_test_split(
-X, y, test_size=0.05, random_state=0)
-print("X_train:")
-print(X_train.head()) # Print the first few rows of the
-training features
-print("\nX_test:")
-print(X_test.head()) # Print the first few rows of the testing
-features
-print("\ny_train:")
-print(y_train.head()) # Print the first few rows of the
-training target values
-print("\ny_test:")
-print(y_test.head()) # Print the first few rows of the testing
-target values
-
-
-
-
-
-Program 2 : Consider Array input :
 import numpy as np
-import pandas as pd
 from sklearn.model_selection import train_test_split
-# Define arrays for X and y
-X = np.array([[1, 2, 3],
+X = X = np.array([[1, 2, 3],
 [4, 5, 6],
 [7, 8, 9],
 [10, 11, 12],
@@ -51,19 +11,13 @@ X = np.array([[1, 2, 3],
 [22, 23, 24],
 [25, 26, 27],
 [28, 29, 30]])
-y = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-# Convert to pandas DataFrame for consistency
-df = pd.DataFrame(X, columns=['Feature1', 'Feature2',
-'Feature3'])
+y = np.array([1,2,3,4,5,6,7,8,9,10])
+df = pd.DataFrame(X, columns=['Feature1', 'Feature2', 'Feature3'])
 df['Target'] = y
-# Separate features and target variable
-X = df.iloc[:, :-1] # Features
-y = df.iloc[:, -1] # Target variable
-# Split the dataset into training and testing sets
+X = df.iloc[:, :-1]
+y = df.iloc[:, -1]
 X_train, X_test, y_train, y_test = train_test_split(
-X, y, test_size=0.3, random_state=0) # Changed test_size to
-30% for demonstration
-# Print the training and testing sets
+X, y, test_size=0.3, random_state=0)
 print("X_train:")
 print(X_train)
 print("\nX_test:")
