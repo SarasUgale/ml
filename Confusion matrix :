@@ -1,18 +1,44 @@
-Basic Program 1 :
 from sklearn.metrics import confusion_matrix
->>> y_true = [2, 0, 2, 2, 0, 1]
->>> y_pred = [0, 0, 2, 2, 0, 2]
->>> confusion_matrix(y_true, y_pred)
-array([[2, 0, 0],
-[0, 0, 1],
-[1, 0, 2]])
+import numpy as np
+true_values = np.array([0,1,1,0,1,0,0,1])
+predicted_values = np.array([1,0,1,1,0,1,0,0])
+cm = confusion_matrix(true_values,predicted_values)
+print("Confusion Matrix")
+print(cm)
 
 
 
-Program 2:
-y_true = ["cat", "ant", "cat", "cat", "ant", "bird"]
->>> y_pred = ["ant", "ant", "cat", "cat", "ant", "cat"]
->>> confusion_matrix(y_true, y_pred, labels=["ant", "bird", "cat"])
-array([[2, 0, 0],
-[0, 0, 1],
-[1, 0, 2]])
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.heatmap(cm, annot=True, fmt='d' , cmap='Blues')
+plt.xlabel('predicted')
+plt.ylabel('True')
+plt.title('Confusion Matrix')
+plt.show()
+
+
+
+from sklearn.metrics import confusion_matrix
+import numpy as np
+true_values = np.array([1,0,0,1,0,1])
+predicted_values = np.array([0,1,1,0,0,1])
+cm = confusion_matrix(true_values,predicted_values)
+TN,FP,FN,TP = cm.ravel()
+print("Confusion_matrix")
+print(cm)
+print(f"True Positive (TP): {TN}")
+print(f"False Positive (FP): {FP}")
+print(f"False Negative (FN): {FN}")
+print(f"True Negative (TN): {TN}")
+
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import metrics
+actual = np.random.binomial(1, 0.9, size=1000)
+predicted = np.random.binomial(1, 0.9 , size=1000)
+confusion_matrix = metrics.confusion_matrix(actual,predicted)
+cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix=confusion_matrix)
+cm_display.plot()
+plt.show()
